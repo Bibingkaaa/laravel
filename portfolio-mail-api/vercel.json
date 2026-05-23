@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "functions": {
-    "api/index.php": {
-      "runtime": "vercel-php@0.6.2"
+  "builds": [
+    {
+      "src": "api/index.php",
+      "use": "vercel-php@0.6.2"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/(.*)",
@@ -13,7 +14,7 @@
   ],
   "headers": [
     {
-      "source": "/api/(.*)",
+      "source": "/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
