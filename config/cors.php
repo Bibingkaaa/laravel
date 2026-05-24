@@ -21,7 +21,7 @@ return [
 
     'allowed_origins' => ['http://localhost:5173',
         // Add your actual Vercel frontend URL here once you deploy React!
-        'https://laravel-nu-nine.vercel.app',],
+        'https://portfolio-beta-sage-d57vf807oo.vercel.app/',],
 
     'allowed_origins_patterns' => [],
 
