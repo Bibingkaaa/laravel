@@ -9,6 +9,10 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::get('/ping', function () {
+    return response()->json(['ok' => true]);
+});
+
 
 Route::post('/contact', function (Request $request) {
     $validated = $request->validate([
