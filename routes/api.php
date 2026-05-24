@@ -11,14 +11,23 @@ Route::get('/user', function (Request $request) {
 
 
 Route::post('/contact', function (Request $request) {
-    $request->validate([
+    $validated = $request->validate([
         'name' => 'required|string',
         'email' => 'required|email',
         'message' => 'required|string'
     ]);
 
-    // Send the email to your own inbox
-    Mail::to('reyesmaryhannahcaryl@gmail.com')->send(new ContactMail($request->all()));
+    try {
+        // Send the email to your own inbox
+        Mail::to('reyesmaryhannahcaryl@gmail.com')->send(new ContactMail($validated));
+    } catch (\Throwable $e) {
+        report($e);
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Failed to send message.',
+        ], 500);
+    }
 
     return response()->json(['success' => true, 'message' => 'Message sent!']);
 });
